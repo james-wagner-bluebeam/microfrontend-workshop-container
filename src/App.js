@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
 
+const Mfe01Page = React.lazy(() => import("mfe01/Page"));
+
 const Home = () => <h2>Home Page</h2>
-const About = () => <h2>About Page</h2>
-const Dashboard = () => <h2>Dashboard Page</h2>
 
 const App = () => {
   return (
@@ -21,10 +21,7 @@ const App = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/mfe01">Microfrontend 01</Link>
             </li>
           </ul>
 
@@ -34,11 +31,10 @@ const App = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/dashboard">
-              <Dashboard />
+            <Route exact path="/mfe01">
+              <Suspense fallback={"loading..."}>
+                <Mfe01Page/>
+              </Suspense>
             </Route>
           </Switch>
         </div>

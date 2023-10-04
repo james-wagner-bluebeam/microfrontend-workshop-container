@@ -28,8 +28,10 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "container",
-      remotes: {},
-      shared: {},
+      remotes: {
+        mfe01: "mfe01@http://localhost:3001/remoteEntry.js",
+      },
+      shared: [{react: {singleton: true}, "react-dom": {singleton: true}}],
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
