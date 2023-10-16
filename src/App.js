@@ -8,9 +8,11 @@ import {
 
 const Mfe01Page = React.lazy(() => import("mfe01/Page"));
 
-const Home = () => <h2>Home Page</h2>
+function Home() {
+  return <h2>Home Page</h2>
+}
 
-const App = () => {
+export default function App() {
   return (
     <div>
       <h1>Microfrontend Workshop</h1>
@@ -42,5 +44,3 @@ const App = () => {
     </div>
   )
 }
-
-export default App;
